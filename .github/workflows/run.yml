@@ -2,8 +2,8 @@ name: Update CSS Bot
 
 on:
   schedule:
-    - cron: "*/15 * * * *"  # Every 15 mins (GitHub's preferred minimum for reliability)
-  workflow_dispatch:        # The "Manual Run" button
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
   repository_dispatch:
     types: [update-css]
 
@@ -11,26 +11,19 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
     permissions:
-      contents: write       # Crucial: This allows the bot to save files back to your repo
-
+      contents: write
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install Dependencies
-        run: |
-          npm install
-          npx playwright install --with-deps chromium
+      - run: npm install
+      - run: npx playwright install --with-deps chromium
+      - run: node update.js
 
-      - name: Run Update Script
-        run: node update.js
-
-      - name: Commit and Push changes
+      - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
