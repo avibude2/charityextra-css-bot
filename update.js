@@ -55,5 +55,9 @@ await page.click('.submit_admin_post');
 
   console.log("CSS updated.");
 
+  await browser.close();
+process.exit(0);
+
 
 })();
+
