@@ -1,4 +1,4 @@
-name: Update CSS
+name: Update CSS Bot
 
 on:
   schedule:
