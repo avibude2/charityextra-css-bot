@@ -2,7 +2,7 @@ const { chromium } = require('playwright');
 
 (async () => {
 
-  const browser = await chromium.launch({ headless:false });
+  const browser = await chromium.launch({ headless:true });
 
   const context = await browser.newContext({
     storageState: 'auth.json'
@@ -54,5 +54,6 @@ const { chromium } = require('playwright');
 await page.click('.submit_admin_post');
 
   console.log("CSS updated.");
+
 
 })();
