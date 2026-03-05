@@ -1,9 +1,11 @@
 name: Update CSS
 
 on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
   repository_dispatch:
     types: [update-css]
-  workflow_dispatch:
 
 jobs:
   run-script:
