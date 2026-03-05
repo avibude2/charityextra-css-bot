@@ -1,12 +1,9 @@
 name: Update CSS
 
 on:
+  repository_dispatch:
+    types: [update-css]
   workflow_dispatch:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: "*/5 * * * *"
 
 jobs:
   run-script:
@@ -24,4 +21,3 @@ jobs:
       - run: npx playwright install chromium
 
       - run: node update.js
-# scheduler activation
