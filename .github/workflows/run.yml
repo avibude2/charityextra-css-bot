@@ -2,7 +2,7 @@ name: Update CSS
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -21,3 +21,4 @@ jobs:
       - run: npx playwright install chromium
 
       - run: node update.js
+# scheduler activation
