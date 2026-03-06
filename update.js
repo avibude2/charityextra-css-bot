@@ -12,7 +12,7 @@ const { chromium } = require('playwright');
 
   // STEP 1 — get total goals
   await page.goto("https://www.charityextra.com/bymctehillathon/admin/communities");
-
+console.log(await page.url());
   await page.waitForSelector("#my-ajax-grid");
 
   const goals = await page.$$eval(
@@ -60,4 +60,5 @@ process.exit(0);
 
 
 })();
+
 
